@@ -31,7 +31,7 @@
         </td>
     </tr>
     <tr>
-        <th>Tasks</th>
+        <th>Tags</th>
         <th>
             <%= form_for( @task) do |t| %>
             <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
