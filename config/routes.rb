@@ -1,45 +1,9 @@
 Rails.application.routes.draw do
-  get 'menu' => 'access#menu'
-  get 'login' => 'access#new'
-  delete 'logout' => 'access#destroy'
-  resource :access, controller: 'access', only: [:new, :create, :destroy] do
-    member do
-      get :menu
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+      resources :users
     end
   end
-  root "main#index"
-  # get "/", to: "homepage#home", as: "root"
-  #
-
-  match 'about', to: "main#about", via: :get
-
-  # get 'main/index'
-  # get 'main/about'
-
-  resources :categories do
-    member do
-      get :delete
-    end
-  end
-
-  resources :tasks do
-    member do
-      get :delete
-    end
-  end
-
-  # get 'tasks/index'
-  # get 'tasks/show'
-  # get 'tasks/new'
-  # get 'tasks/edit'
-  # get 'tasks/delete'
-  # get 'categories/index'
-  # get 'categories/show'
-  # get 'categories/new'
-  # get 'categories/edit'
-  # get 'categories/delete'
-
-  # get 'homepage/home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -48,4 +12,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
+  match '*unmatched', to: 'application#not_found_method', via: :all
+
+
 end
