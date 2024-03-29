@@ -20,8 +20,8 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
-    config.action_controller.perform_caching = true
-    config.action_controller.enable_fragment_cache_logging = true
+    # config.action_controller.perform_caching = true
+    # config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
@@ -60,7 +60,7 @@ Rails.application.configure do
   config.active_job.verbose_enqueue_logs = true
 
   # Suppress logger output for asset requests.
-  config.assets.quiet = true
+  # config.assets.quiet = true
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
@@ -75,6 +75,5 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
   # Levels: :debug, :info, :warn, :error, :fatal
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "debug")
-  # config/environments/development.rb
-  config.sass.inline_source_maps = true
+
 end
