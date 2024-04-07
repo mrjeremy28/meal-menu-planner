@@ -28,14 +28,14 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
-    add_breadcrumb(@category.name, categories_path(@task))
+    add_breadcrumb(@category.name, category_path(@category))
     add_breadcrumb("Edit")
   end
 
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      redirect_to(categories_path)
+      redirect_to(category_path)
     else
       render('edit')
     end
@@ -43,6 +43,7 @@ class CategoriesController < ApplicationController
 
   def delete
     @category = Category.find(params[:id])
+    add_breadcrumb(@category.name, category_path(@category))
     add_breadcrumb("Delete")
   end
 

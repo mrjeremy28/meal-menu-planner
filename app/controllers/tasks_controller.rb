@@ -48,6 +48,7 @@ class TasksController < ApplicationController
 
   def delete
     @task = Task.find(params[:id])
+    add_breadcrumb(@task.name, task_path(@task))
     add_breadcrumb("Delete")
   end
 
