@@ -33,6 +33,12 @@
     padding: 0;
     background: no-repeat center/100%;
   }
+  .true {
+    color: green;
+  }
+  .false {
+    color: red;
+  }
   span.status.true {
     background-image: url('solid_square_check.png');
   }
