@@ -1,0 +1,1 @@
+//= rewquire jquery-ui
