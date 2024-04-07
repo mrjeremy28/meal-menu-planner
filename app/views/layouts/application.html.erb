@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Task Manager<%= ' - ' + yield(:title) if content_for?(:title) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,10 +9,31 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= yield(:script) %>
+    <!-- <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %> -->
   </head>
 
   <body>
     <%= render(partial: "layouts/navigation") %>
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <% breadcrumbs.each do |crumb| %>
+           <li class="breadcrumb-item">
+            <% if crumb.link? %>
+              <%= link_to crumb.name, crumb.path, class: "" %>
+            <% else %>
+                <%= crumb.name %>
+            <% end %>
+      
+            <!-- <% unless crumb == breadcrumbs.last %>
+              <span class="breadcrumb-separator">/</span>
+            <% end %> -->
+           </li>
+          <% end %>
+        </ol>
+      </nav>
+    </div>
+
     <div id="content" class="container-fluid">
       <%= render(partial: "layouts/flash") %>
       <%= yield %>

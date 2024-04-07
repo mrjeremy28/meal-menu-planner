@@ -5,6 +5,16 @@ class ApplicationController < ActionController::Base
   before_action :get_user_info_from_session
   before_action :confirm_logged_in
 
+  helper_method :breadcrumbs
+
+  def breadcrumbs
+    @breadcrumbs ||= []
+  end
+
+  def add_breadcrumb(name, path = nil)
+    breadcrumbs << Breadcrumb.new(name, path)
+  end
+
   private
 
   def get_user_info_from_session
