@@ -1,35 +1,52 @@
 <!-- <%= link_to('Back to Homepage', {controller: 'main', action: 'index'}) %><br /> -->
 
-<div class="tasks index">
+<div class="tasks index table-responsive">
   <h2>Tasks</h2>
+  <div class="container">
+    <%= link_to("Add New Task", new_task_path, class: "actions new btn btn-primary float-end" )%>
+  </div>
 
-  <%= link_to("Add New Task", new_task_path, class: "actions new" )%>
+  <table class="table table-striped" summary="Task list" style="width: 100%;">
+    <thead>
+        <tr class="header">
+          <th scope="col">#</th>
+          <th scope="col">Task</th>
+          <th scope="col">Completed</th>
+          <th scope="col">Description</th>
+          <th scope="col">Category</th>
+          <th scope="col"># of Tags</th>
+          <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+      <tr>
+        <th scope="row"><%= task.position %></th>
+        <td><%= task.name %></td>
+        <td><%= status_tag(task.completed?)%></td>
+        <td><%= truncate(task.description, length: 30) %></td>
+        <td><%= task.category&.name || "-" %></td>
+        <td><%= task.tags&.count %></td>
+        <td class="actions" style="text-decoration:none">
+          <div class='btn-group'>
+            <%= link_to task_path(task), class: "action show" do %>
+            <button type="button" class="btn btn-sm btn-outline-info col-xs-4"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <% end %>
+            <%= link_to edit_task_path(task), class: "action edit" do %>
+            <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
+            <% end %>
+            <%= link_to delete_task_path(task), class: "action delete" do %>
+            <button type="button" class="btn btn-sm btn-outline-danger col-xs-4"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        <% end %>
 
-  <table class="listing" summary="Task list" style="width: 100%;">
-    <tr class="header">
-      <th>#</th>
-      <th>Task</th>
-      <th>Completed</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th># of Tags</th>
-      <th>Actions</th>
-    </tr>
-    <% @tasks.each do |task| %>
-    <tr>
-      <td><%= task.position %></td>
-      <td><%= task.name %></td>
-      <td><%= status_tag(task.completed?)%></td>
-      <td><%= truncate(task.description, length: 30) %></td>
-      <td><%= task.category&.name || "-" %></td>
-      <td><%= task.tags&.count %></td>
-      <td class="actions">
-        <%= link_to("Show", task_path(task), class: "action show") %>
-        <%= link_to("Edit", edit_task_path(task), class: "action edit") %>
-        <%= link_to("Delete", delete_task_path(task), class: "action delete") %>
-      </td>
-    </tr>
-    <% end %>
+          <!-- <%= link_to("Show", task_path(task), class: "action show") %> -->
+          <!-- <%= link_to("Edit", edit_task_path(task), class: "action edit") %> -->
+          <!-- <%= link_to("Delete", delete_task_path(task), class: "action delete") %> -->
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
 
   </table>
 </div>
