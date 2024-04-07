@@ -7,9 +7,9 @@ module ApplicationHelper
     options[:true_text] ||= ""
     options[:false_text] ||= ""
     if boolean
-      content_tag(:span, options[:true_text], class: "status true")
+      content_tag(:i, options[:true_text], class: "fa-regular fa-circle-check true")
     else
-      content_tag(:span, options[:false_text], class: "status false")
+      content_tag(:i, options[:false_text], class: "fa-regular fa-circle-xmark false")
     end
   end
 end
