@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  # before_action :set_breadcrumbs
+  before_action :set_breadcrumbs, only: [:show, :new, :edit, :delete]
   def index
     # @page = params[:page].to_i
     @tasks = Task.order(:position)
@@ -9,16 +9,12 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    add_breadcrumb("Home", "/")
-    add_breadcrumb("Tasks", tasks_path)
     add_breadcrumb(@task.name)
   end
 
   def new
     @count = Task.count
     @task = Task.new(position: @count + 1)
-    add_breadcrumb("Home", "/")
-    add_breadcrumb("Tasks", tasks_path)
     add_breadcrumb("New")
   end
 
@@ -36,8 +32,6 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    add_breadcrumb("Home", "/")
-    add_breadcrumb("Tasks", tasks_path)
     add_breadcrumb(@task.name, task_path(@task))
     add_breadcrumb("Edit")
   end
@@ -54,8 +48,6 @@ class TasksController < ApplicationController
 
   def delete
     @task = Task.find(params[:id])
-    add_breadcrumb("Home", "/")
-    add_breadcrumb("Tasks", tasks_path)
     add_breadcrumb("Delete")
   end
 
@@ -66,10 +58,12 @@ class TasksController < ApplicationController
   end
 
   private
+
   def set_breadcrumbs
     add_breadcrumb("Home", "/")
-    add_breadcrumb("Tasks")
+    add_breadcrumb("Tasks", tasks_path)
   end
+
   def task_params
     params.require(:task).permit(:name, :position, :completed, :description, :category_id, tag_ids: [])
   end
