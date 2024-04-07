@@ -1,41 +1,54 @@
 <%= error_messages_for(f.object) %>
-<table summary="Task form fields">
-    <tr>
-        <th>Name</th>
-        <td>
-            <%= f.text_field(:name) %>
-        </td>
-    </tr>
-    <tr>
-        <th>Position</th>
-        <td>
-            <%= f.text_field(:position) %>
-        </td>
-    </tr>
-    <tr>
-        <th>Completed</th>
-        <td>
-            <%= f.check_box(:completed) %>
-        </td>
-    </tr>
-    <tr>
-        <th>Description</th>
-        <td>
-            <%= f.text_area(:description) %>
-        </td>
-    </tr>
-    <tr>
-        <th>Category</th>
-        <td>
-            <%= collection_select(:task, :category_id, Category.order(:name), :id, :name, prompt: true) %>
-        </td>
-    </tr>
-    <tr>
-        <th>Tags</th>
-        <th>
-            <%= form_for( @task) do |t| %>
-            <%= t.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
-            <% end %>
-        </th>
-    </tr>
-</table>
+    <div class="form-group row">
+        <label for="name" class="col-4 col-form-label">Name</label>
+        <div class="col-8">
+            <%= f.text_field(:name, class: 'form-control' ) %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="position" class="col-4 col-form-label">Position</label>
+        <div class="col-8">
+            <%= f.text_field(:position, class: 'form-control' ) %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-4">Completed</label>
+        <div class="col-8">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <%= f.check_box(:completed, class: 'custom-control-input' ) %>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="description" class="col-4 col-form-label">Description</label>
+        <div class="col-8">
+            <%= f.text_area(:description, class: 'form-control' , cols:40, rows: 5) %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="category" class="col-4 col-form-label">Category</label>
+        <div class="col-8">
+            <%= collection_select(:task, :category_id, Category.order(:name), :id, :name, prompt: true,
+                class:'my-custom-class') %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-4">Tags</label>
+        <div class="col-8">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |t| %>
+                    <%= t.label class:"custom-control-label" do %>
+                        <%= t.check_box(class:'custom-control-input') %>
+                            <%= t.text %>
+                                <% end %>
+                                    <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <%= f.submit("Save Task", :class=> "btn btn-success") %>
+            <%= link_to("Cancel", tasks_path, :class=> 'btn btn-light float-end') %>
+        </div>
+    </div>
