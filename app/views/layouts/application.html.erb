@@ -13,9 +13,14 @@
 
   <body>
     <%= render(partial: "layouts/navigation") %>
+    <div id="content" class="container-fluid">
       <%= render(partial: "layouts/flash") %>
       <%= yield %>
     </div>
-    <footer>Copyright @2020</footer>
+    <nav class="navbar bottom bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Copyright @2024</a>
+      </div>
+    </nav>
   </body>
 </html>
