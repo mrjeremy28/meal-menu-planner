@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md sticky-top bg-body-tertiary">
+    <div class="container-fluid">
+      <%= link_to("Meal Planner", menu_path, class: "navbar-brand") %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuToggler" aria-controls="menuToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuToggler">
+        <ul class="navbar-nav me-auto mb-0 ">
+          <li class="nav-item">
+            <%= active_link_to 'Tasks', tasks_path, active: :inclusive, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= active_link_to 'Categories', categories_path, active: :inclusive, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= active_link_to 'About', {controller: "main", action: "about"}, active: :inclusive, class: "nav-link" %>            
+          </li>
+        </ul>
+        <div class="d-flex">
+          <span class="navbar-text" style="padding-right: 10px;">User: <%= @username %>  </span>
+          <button class="btn btn-outline-success" type="submit">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
