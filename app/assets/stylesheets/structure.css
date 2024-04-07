@@ -1,21 +1,6 @@
-header {
-    height: 1em;
-    padding: 1em;
-    margin-bottom: 1em;
-    background: #0099CC;
-    background-image: url('gradient.png');
-  }
-  
-  header span {
-    float: right;
-  }
-  
-  header span .button_to {
-      display: inline;
-  }
-  
+ 
   div#content {
-    min-height: 400px;
+    /* min-height: 400px; */
   }
   
   footer {
@@ -53,4 +38,7 @@ header {
   }
   span.status.false {
     background-image: url('solid_square_x.png');
+  }
+  .action {
+    text-decoration: none;
   }
