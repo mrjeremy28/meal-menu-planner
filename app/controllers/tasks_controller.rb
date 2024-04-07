@@ -21,7 +21,7 @@ class TasksController < ApplicationController
       # new action is not being called, it's rendering "New" view
       # assign any instance variable
       # @count = Task.count
-      render('new')
+      render(:new, status: 422)
     end
   end
 
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to task_path(@task)
     else
-      render('edit')
+      render(:edit, status: 422)
     end
 
   end
