@@ -1,14 +1,10 @@
 
-<div class="categories new">
+<div class="categories new container">
   <h2>Create Category</h2>
 
   <%= form_for(@category) do |f| %>
 
     <%= render(partial: 'form', locals: {f: f}) %>
-
-    <div class="form-buttons">
-      <%= f.submit("Create Category") %>
-    </div>
 
   <% end %>
 </div>

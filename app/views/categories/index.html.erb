@@ -1,25 +1,43 @@
 
-<div class="categories index">
+<div class="categories index table-responsive">
   <h2>Categories</h2>
+  <div class="container-fluid">
 
-  <%= link_to("Add New Category", new_category_path, class: 'action new') %>
+  <%= link_to("Add New Category", new_category_path, class: 'action new btn btn-primary float-end') %>
 
-  <table class="listing" summary="Category list" style="width: 100%;">
-    <tr class="header">
-      <th>Category</th>
-      <th>Tasks</th>
-      <th>Actions</th>
-    </tr>
-    <% @categories.each do |category| %>
-    <tr>
-      <td><%= category.name %></td>
-      <td><%= category.tasks.count %></td>
-      <td class="actions">
-        <%= link_to("Show", category_path(category), class: 'action show') %>
-        <%= link_to("Edit", edit_category_path(category), class: 'action edit') %>
-        <%= link_to("Delete", delete_category_path(category), class: 'action delete') %>
-      </td>
-    </tr>
-    <% end %>
+  <table class="table table-striped" summary="Category list" style="width: 100%;">
+    <thead>
+      <tr class="header">
+        <th scope="col">Category</th>
+        <th scope="col">Tasks</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+      <tr>
+        <td scope="row"><%= category.name %></td>
+        <td><%= category.tasks.count %></td>
+        <td class="actions" style="text-decoration:none">
+          <div class='btn-group'>
+            <%= link_to category_path(category), class: "action show" do %>
+            <button type="button" class="btn btn-sm btn-outline-info col-xs-4"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <% end %>
+            <%= link_to edit_category_path(category), class: "action edit" do %>
+            <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
+            <% end %>
+            <%= link_to delete_category_path(category), class: "action delete" do %>
+            <button type="button" class="btn btn-sm btn-outline-danger col-xs-4"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        <% end %>
+          
+          <!-- <%= link_to("Show", category_path(category), class: 'action show') %>
+          <%= link_to("Edit", edit_category_path(category), class: 'action edit') %>
+          <%= link_to("Delete", delete_category_path(category), class: 'action delete') %> -->
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+
   </table>
 </div>
