@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to(categories_path)
     else
-      render('new')
+      render('new', status: 422)
     end
   end
 
@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to(category_path)
     else
-      render('edit')
+      render('edit', status: 422)
     end
   end
 
