@@ -2,32 +2,37 @@
 <div class="categories show">
   <h2>Show Category</h2>
 
-  <div class="actions">
-    <%= link_to('Edit', edit_category_path(@category)) %>
-    <%= link_to('Delete', delete_category_path(@category)) %>
+  
+  <div class="container-fluid">
+    <div class="d-flex justify-content-end">
+    
+      <%= link_to("Edit", edit_category_path(@category), class: 'action edit btn btn-primary') %>
+      <%= link_to("Delete", delete_category_path(@category), class: 'action delete btn btn-danger') %>
+    </div>
+    
+    <table class="table table-striped">    
+      <tbody>
+        <tr>
+          <th scope="row">Name</th>
+          <td scope="row"><%= @category.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Tasks</th>
+          <td  scope="row">
+            <% @category.tasks.each do |task| %>
+              <%= task.name %><br />
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Created</th>
+          <td scope="row"><%= @category.created_at %></td>
+        </tr>
+        <tr>
+          <th scope="row">Updated</th>
+          <td scope="row"><%= @category.updated_at %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <table summary="category detail view">
-    <tr>
-      <th>Name</th>
-      <td><%= @category.name %></td>
-    </tr>
-    <tr>
-      <th>Tasks</th>
-      <td>
-        <% @category.tasks.each do |task| %>
-          <%= task.name %><br />
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th>Created</th>
-      <td><%= @category.created_at %></td>
-    </tr>
-    <tr>
-      <th>Updated</th>
-      <td><%= @category.updated_at %></td>
-    </tr>
-  </table>
-
 </div>
