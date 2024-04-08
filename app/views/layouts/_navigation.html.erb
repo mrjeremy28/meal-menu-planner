@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md sticky-top bg-body-tertiary">
     <div class="container-fluid">
-      <%= link_to("Meal Planner", menu_path, class: "navbar-brand") %>
+      <%= link_to("Meal Planner", {controller:"main", action: "index"}, class: "navbar-brand") %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuToggler" aria-controls="menuToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
