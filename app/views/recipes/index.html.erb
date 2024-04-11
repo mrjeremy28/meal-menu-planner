@@ -1,0 +1,45 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="recipes index table-responsive">
+  <h2>Recipes</h2>
+  <div class="container-fluid">
+
+  <%= link_to("Add New Recipe", new_recipe_path, class: 'action new btn btn-primary float-end') %>
+
+  <table class="table table-striped" summary="Recipe list" style="width: 100%;">
+    <thead>
+      <tr class="header">
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Servings</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @recipes.each do |recipe| %>
+  <tr>
+    <td scope="row">
+      <% if recipe.image.attached? then %>
+        <img src="<%=(url_for(recipe.image))%>" width="100px"/>
+      <% end %>
+    </td>
+    <td scope="row"><%= recipe.name %></td>
+    <td><%= recipe.servings %></td>
+    
+    <td class="actions" style="text-decoration:none">
+      <div class='btn-group'>
+        <%= link_to recipe_path(recipe), class: "action show" do %>
+        <button type="button" class="btn btn-sm btn-outline-info col-xs-4"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <% end %>
+        <%= link_to edit_recipe_path(recipe), class: "action edit" do %>
+        <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
+        <% end %>
+      </div>
+      
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+
+</table>
+</div>

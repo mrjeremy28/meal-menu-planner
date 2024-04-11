@@ -1,0 +1,36 @@
+<div id="<%= dom_id recipe %>" class="card">
+  <img src="<%=(url_for(recipe.image))%>" class="card-img-top" alt="<%= recipe.image.filename %>">
+  <div class="card-body">
+    <h5 class="card-title"><%= recipe.name %></h5>
+    <p class="card-text">Servings: <%= recipe.servings %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+
+<div id="<%= dom_id recipe %>">
+  <div class="container">
+    <img src="<%=(url_for(recipe.image))%>" class="rounded float-start" alt="...">
+    <strong><%= recipe.name %></strong>
+    
+  </div>
+  
+  <p>
+    <strong>Servings:</strong>
+    <%= recipe.servings %>
+  </p>
+
+  <p>
+    <strong>Instructions:</strong>
+    <%= recipe.instructions %>
+  </p>
+
+
+</div>

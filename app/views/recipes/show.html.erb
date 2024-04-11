@@ -1,0 +1,52 @@
+<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col"> </div>
+    <div class="col-sm-12 col-md-10 col-lg-8">
+      <div id="<%= dom_id @recipe %>" class="card">
+        <% if @recipe.image.attached? %>
+        <img src="<%=(url_for(@recipe.image))%>" class="card-img-top" alt="<%= @recipe.image.filename %>">
+        <% else %> 
+        <span class="container">No Image. Edit to add image</span>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @recipe.name %></h5>
+          <p class="card-text">Servings: <%= @recipe.servings %></p>
+        </div>
+        <div class="card-header">
+          Ingredients:
+        </div>
+        <ul class="list-group list-group-flush">
+          <% @recipe.recipe_ingredients.order(:order).each do |i| %>
+          <!-- <%= i %> -->
+          <li class="list-group-item">
+            <%= i.full_ingredient %>
+          </li>
+          <% end %>
+          <!-- <li class="list-group-item"><%= @recipe.instructions %></li> -->
+          <!-- <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li> -->
+        </ul>
+        
+        <div class="card-header">
+          Instructions:
+        </div>
+        <ul class="list-group list-group-flush">
+          <% @recipe.instructions.split(/\n+/).each do |i| %>
+          <!-- <%= i %> -->
+          <li class="list-group-item"><%= i %></li>
+          <% end %>
+          <!-- <li class="list-group-item"><%= @recipe.instructions %></li> -->
+          <!-- <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li> -->
+        </ul>
+        <div class="card-body">
+          <%= link_to("Edit this recipe", edit_recipe_path(@recipe), class: 'action edit btn btn-primary float-start') %>
+          <%= button_to "Destroy this recipe", @recipe, method: :delete, class: 'btn btn-danger float-end' %>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col"> </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<% if recipe.errors.any? %>
+  <div style="color: red">
+    <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+    <ul>
+      <% recipe.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: recipe) do |form| %>
+
+  <div class="form-group row">
+    <%= form.label :name, class: "col-4 col-form-label" %>
+    <div class="col-8">
+    <%= form.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :servings, class: "col-4 col-form-label" %>
+    <div class="col-8">
+    <%= form.number_field :servings, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :instructions, class: "col-4 col-form-label" %>
+    <div class="col-8">
+    <%= form.text_area :instructions, class: 'form-control', rows:10 %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :image, class: "col-4 col-form-label" %>
+    <div class="col-8">
+      <% if @recipe.image.attached? %>
+        <div>
+          <img src="<%=(url_for(@recipe.image))%>" width="100px"/>
+        </div>
+        <%= form.file_field :image, class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-auto">
+      <h3>Ingredients</h3>
+    </div>
+    <div class="col-auto">
+      <%= button_tag("Add Ingredient", {
+        class:'btn btn-sm btn-outline-primary',
+        data: {
+          controller: "nested-fields", 
+          association: "ingredients" ,
+          action: "click->nested-fields#addField", 
+          content: form.fields_for(:recipe_ingredients, RecipeIngredient.new, child_index:"NEW_RECORD") {|dose_form| render("recipe_ingredient_fields", f: dose_form) }
+        }
+      }) do %>
+        <i class="fa-regular fa-square-plus"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="ingredients" class="grid gap-0 row-gap-3">
+    <%= form.fields_for :recipe_ingredients, @recipe.recipe_ingredients.order(:order) do |recipe_ingredient_form| %>
+      <%= render 'recipe_ingredient_fields', f: recipe_ingredient_form %>
+      
+    <% end %>
+  </div>
+  
+  
+  <div class="links">
+    
+   
+
+  </div>
+  <br>
+  
+  <div class="form-group row">
+    <div class="offset-4 col-8">
+      <%= form.submit("Save recipe", :class=> "btn btn-success") %>
+    </div>
+  </div>
+
+
+<% end %>
