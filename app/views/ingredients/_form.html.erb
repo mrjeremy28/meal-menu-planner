@@ -1,0 +1,63 @@
+<%= form_with(model: ingredient) do |form| %>
+  <% if ingredient.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+
+      <ul>
+        <% ingredient.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= form.label :name, class: "col-4 col-form-label" %>
+    <div class="col-8">
+    <%= form.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :description, class: "col-4 col-form-label" %>
+    <div class="col-8">
+    <%= form.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :image, class: "col-4 col-form-label" %>
+    <div class="col-8">
+    <%= form.file_field :image, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :image, class: "col-4 col-form-label" %>
+    <div class="col-8">
+      <% if @ingredient.image.attached? %>
+        <div>
+          <img src="<%=(url_for(@ingredient.image))%>" width="100px"/>
+        </div>
+        <%= form.file_field :image, class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :default_quantity_unit_id, 'Default Quantity Unit', class: "col-4 col-form-label" %>
+    <div class="col-8">
+      <%= form.collection_select(:default_quantity_unit_id, QuantityUnit.all, :id, :name, prompt: true) %>
+    </div>
+  </div>
+  
+    <div class="form-group row">
+      <div class="container"><br></div>
+    </div>
+
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+          <%= form.submit("Save ingredient", :class=> "btn btn-success") %>
+    </div>
+  </div>
+<% end %>

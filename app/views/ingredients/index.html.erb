@@ -1,0 +1,46 @@
+<p style="color: green"><%= notice %></p>
+<p style="color: green"><%= notice %></p>
+
+<div class="ingredients index table-responsive">
+  <h2>Ingredients</h2>
+  <div class="container-fluid">
+
+  <%= link_to("Add New Ingredient", new_ingredient_path, class: 'action new btn btn-primary float-end') %>
+
+  <table class="table table-striped" summary="Ingredient list" style="width: 100%;">
+    <thead>
+      <tr class="header">
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @ingredients.each do |ingredient| %>
+  <tr>
+    <td scope="row">
+      <% if ingredient.image.attached? then %>
+        <img src="<%=(url_for(ingredient.image))%>" width="100px"/>
+      <% end %>
+    </td>
+    <td scope="row"><%= ingredient.name %></td>
+    <td><%= ingredient.description %></td>
+    
+    <td class="actions" style="text-decoration:none">
+      <div class='btn-group'>
+        <%= link_to ingredient_path(ingredient), class: "action show" do %>
+        <button type="button" class="btn btn-sm btn-outline-info col-xs-4"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <% end %>
+        <%= link_to edit_ingredient_path(ingredient), class: "action edit" do %>
+        <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
+        <% end %>
+      </div>
+      
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+
+</table>
+</div>
