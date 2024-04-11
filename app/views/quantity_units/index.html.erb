@@ -1,0 +1,41 @@
+
+<p style="color: green"><%= notice %></p>
+<div class="quantity_units index table-responsive">
+  <h2>Quantity Units</h2>
+  <div class="container-fluid">
+
+  <%= link_to("Add New Quantity Unit", new_quantity_unit_path, class: 'action new btn btn-primary float-end') %>
+
+  <table id="quantity_units" class="table table-striped" summary="Quantity Unit list" style="width: 100%;">
+    <thead>
+      <tr class="header">
+        <th scope="col">Quantity Unit</th>
+        <th scope="col">Quantity Unit (plural)</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @quantity_units.order(:id).each do |quantity| %>
+      <tr>
+        <td scope="row"><%= quantity.name %></td>
+        <td scope="row"><%= quantity.plural_name %></td>
+        <td class="actions" style="text-decoration:none">
+          <div class='btn-group'>
+            <%= link_to quantity_unit_path(quantity), class: "action show" do %>
+            <button type="button" class="btn btn-sm btn-outline-info col-xs-4"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <% end %>
+            <%= link_to edit_quantity_unit_path(quantity), class: "action edit" do %>
+            <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
+            <% end %>
+            <%= link_to quantity_unit_path(quantity), method: :delete, class: "action delete" do %>
+            <button type="button" class="btn btn-sm btn-outline-danger col-xs-4"><i class="fa-regular fa-trash-can"></i></button>
+            <% end %>          
+
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>

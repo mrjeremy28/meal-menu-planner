@@ -1,0 +1,27 @@
+<%= form_with(model: quantity_unit) do |form| %>
+  <% if quantity_unit.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(quantity_unit.errors.count, "error") %> prohibited this quantity_unit from being saved:</h2>
+
+      <ul>
+        <% quantity_unit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= form.label :name, class: "col-4 col-form-label" %>
+    <div class="col-8">
+    <%= form.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+          <%= form.submit("Save quantity_unit", :class=> "btn btn-success") %>
+    </div>
+  </div>
+<% end %>

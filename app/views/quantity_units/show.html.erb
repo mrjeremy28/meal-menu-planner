@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="quantity show">
+  <h2>Show Quantity Unit</h2>
+
+  
+  <div class="container-fluid">
+    <div class="d-flex justify-content-end">
+    
+      <%= link_to("Edit", edit_quantity_unit_path(@quantity_unit), class: 'action edit btn btn-primary') %>
+      <%= link_to("Delete", quantity_unit_path(@quantity_unit), method: :delete, class: 'action delete btn btn-danger') %>
+    </div>
+    
+    <table class="table table-striped">    
+      <tbody>
+        <tr>
+          <th scope="row">Name</th>
+          <td scope="row"><%= @quantity_unit.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Plural Name</th>
+          <td scope="row"><%= @quantity_unit.plural_name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Created</th>
+          <td scope="row"><%= @quantity_unit.created_at %></td>
+        </tr>
+        <tr>
+          <th scope="row">Updated</th>
+          <td scope="row"><%= @quantity_unit.updated_at %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
