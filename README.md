@@ -44,3 +44,53 @@ rails s
 
 |||
 |-----------------------------------:|:--------------------------|
+## Schema (Ideal)
+- Users
+    - name:        string
+    - email:       string
+    - password:    string
+
+- Recipes
+    - name:        string
+    - yield:       int
+    - instructions: text
+    - picture: relationship
+
+- RecipeGroups
+    - name:        string
+
+- RecipeLabels
+    - name:       string
+
+- RecipeTags
+    - name:        string
+
+- RecipeCategories
+    - name:        string
+
+- Ingredients
+    - name:                string
+    - description:         string
+    - defaultQuantityUnit: relationship
+    - image:               relationship
+
+- RecipeIngredients
+    - recipe      relationship
+    - ingredient  relationship
+    - fraction    boolean
+    - numerator   int
+    - denomator   int
+    - quantity    decimal
+    - customAmount    string -> i.e. if easier to say 4 Cups, 1 tablespoon, than 4 1/16 Cup
+    - group       string      -> if ingredients are part of group, like for Sauce, or for - main
+    - comments    string 
+
+- QuantityUnits
+    - name                string  i.e. Cups
+    - maxDisplayAmount    int  i.e. if >= 4 Cups max, then show 1 Quart
+    - maxDisplayUnitTo    relationship i.e. cups to Quart if over
+
+- QuantityUnitConversions
+    - unitFrom    relationship
+    - unitTo      relationship
+    - multiplier  decimal
