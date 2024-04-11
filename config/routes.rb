@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :quantity_units
+  resources :ingredients
+  resources :recipes
   get 'menu' => 'access#menu'
   get 'login' => 'access#new'
   delete 'logout' => 'access#destroy'
