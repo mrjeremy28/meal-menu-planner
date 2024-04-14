@@ -27,8 +27,9 @@
     <td scope="row"><%= ingredient.name %></td>
     <td><%= ingredient.description %></td>
     
+
     <td class="actions" style="text-decoration:none">
-      <div class='btn-group'>
+      <div class="d-sm-flex btn-group-vertical">
         <%= link_to ingredient_path(ingredient), class: "action show" do %>
         <button type="button" class="btn btn-sm btn-outline-info col-xs-4"><i class="fa-solid fa-magnifying-glass"></i></button>
         <% end %>
@@ -36,7 +37,6 @@
         <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
         <% end %>
       </div>
-      
     </td>
   </tr>
   <% end %>

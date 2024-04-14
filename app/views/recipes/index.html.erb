@@ -12,7 +12,7 @@
         <th scope="col">Image</th>
         <th scope="col">Name</th>
         <th scope="col">Category</th>
-        <th scope="col">Servings</th>
+        <th scope="col" class="d-none d-sm-table-cell">Servings</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -26,19 +26,19 @@
     </td>
     <td scope="row"><%= recipe.name %></td>
     <td><%= recipe.category&.name || "-" %></td>
-    <td><%= recipe.servings %></td>
+    <td class="d-none d-sm-table-cell"><%= recipe.servings %></td>
     
     <td class="actions" style="text-decoration:none">
-      <div class='btn-group'>
+      <div class="d-sm-flex btn-group-vertical">
         <%= link_to recipe_path(recipe), class: "action show" do %>
-        <button type="button" class="btn btn-sm btn-outline-info col-xs-4"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button type="button" class="btn btn-sm btn-outline-info col-xs-4"><i class="fa-solid fa-magnifying-glass"></i></button>
         <% end %>
         <%= link_to edit_recipe_path(recipe), class: "action edit" do %>
-        <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
         <% end %>
       </div>
-      
     </td>
+    
   </tr>
   <% end %>
 </tbody>
