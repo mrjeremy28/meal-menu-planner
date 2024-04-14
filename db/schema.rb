@@ -150,6 +150,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_000002) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ingredients", "quantity_units", column: "default_quantity_unit_id"
+  add_foreign_key "meals", "meal_plans"
+  add_foreign_key "meals", "recipes"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "quantity_units"
   add_foreign_key "recipe_ingredients", "recipes"
