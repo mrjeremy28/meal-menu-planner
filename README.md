@@ -51,18 +51,19 @@ rails s
     - password:    string
 
 - Recipes
-    - name:        string
-    - yield:       int
+    - name:         string
+    - servings:     int
     - instructions: text
-    - picture: relationship
+    - category:     relationship
+    - picture:      relationship
 
-- RecipeGroups
+- RecipeGroups - TODO
     - name:        string
 
-- RecipeLabels
+- RecipeLabels - TODO
     - name:       string
 
-- RecipeTags
+- RecipeTags - TODO
     - name:        string
 
 - RecipeCategories
@@ -75,22 +76,23 @@ rails s
     - image:               relationship
 
 - RecipeIngredients
-    - recipe      relationship
-    - ingredient  relationship
-    - fraction    boolean
-    - numerator   int
-    - denomator   int
-    - quantity    decimal
-    - customAmount    string -> i.e. if easier to say 4 Cups, 1 tablespoon, than 4 1/16 Cup
-    - group       string      -> if ingredients are part of group, like for Sauce, or for - main
-    - comments    string 
+    - recipe        relationship
+    - ingredient    relationship
+    - quantityUnit  relationship
+    - quantity      string
+    - numerator     int
+    - denomator     int
+    - order         int
+    - customAmount    string -> i.e. if easier to say 4 Cups, 1 tablespoon, than 4 1/16 Cup - TODO
+    - group       string      -> if ingredients are part of group, like for Sauce, or for - main - TODO
+    - comments    string  - TODO
 
 - QuantityUnits
     - name                string  i.e. Cups
-    - maxDisplayAmount    int  i.e. if >= 4 Cups max, then show 1 Quart
-    - maxDisplayUnitTo    relationship i.e. cups to Quart if over
+    - maxDisplayAmount    int  i.e. if >= 4 Cups max, then show 1 Quart - TODO
+    - maxDisplayUnitTo    relationship i.e. cups to Quart if over - TODO
 
-- QuantityUnitConversions
+- QuantityUnitConversions - TODO
     - unitFrom    relationship
     - unitTo      relationship
     - multiplier  decimal
