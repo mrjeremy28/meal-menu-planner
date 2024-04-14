@@ -1,0 +1,29 @@
+<div id="<%= dom_id meal_plan %>">
+  <p>
+  </p>
+
+  <div class="meals">
+    <div class="row row-cols-2 row-cols-sm-auto">
+    <% meal_plan.meals.order(:date).each do |m| %>
+      <div class="col pb-5 ">
+      <div id="<%= dom_id m.recipe %>" class="card col pb-5 " style="width:12rem;">
+        
+        
+        <% if m.recipe.image.attached? %>
+        <img src="<%=(url_for(m.recipe.image))%>" class="card-img-top" alt="<%= m.recipe.image.filename %>">
+        <% else %> 
+        <img src="https://placehold.co/600x400/orange/white" class="card-img-top">
+        <% end %>
+        <div class="card-body">
+          <h4 class="card-title"><%= m.to_s %></h4>
+          <h5 class="card-subtitle"><%= m.recipe.name %></h5>
+          <p class="card-text">Servings: <%= m.recipe.servings %></p>
+          <%= link_to "View Recipe", recipe_path(m.recipe), class:"btn btn-primary"  %>
+        </div>
+      </div>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

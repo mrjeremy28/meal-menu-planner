@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :meal_plans
   resources :quantity_units
   resources :ingredients
   resources :recipes
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
       get :menu
     end
   end
-  root "main#index"
+  root "meal_plans#index"
   # get "/", to: "homepage#home", as: "root"
   #
 

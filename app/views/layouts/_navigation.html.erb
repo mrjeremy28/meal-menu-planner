@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-md sticky-top bg-body-tertiary">
     <div class="container-fluid">
-      <%= link_to("Meal Planner", {controller:"main", action: "index"}, class: "navbar-brand") %>
+      <div class="nav-brand">Meal Planner</div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuToggler" aria-controls="menuToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="menuToggler">
         <ul class="navbar-nav me-auto mb-0 ">
           <li class="nav-item">
-            <%= active_link_to 'Meals', menu_path, active: :inclusive, class: "nav-link" %>
+            <%= active_link_to 'Meals', meal_plans_path, active: :inclusive, class: "nav-link" %>
         </li>
           <li class="nav-item">
             <%= active_link_to 'Tasks', tasks_path, active: :inclusive, class: "nav-link" %>

@@ -1,0 +1,32 @@
+
+<%= form_for @meal_plan, html: { class: "form-horizontal" } do |form| %>
+  <%= form.hidden_field :start_date %>
+  <%= form.hidden_field :end_date %>
+
+  <div class="meals">
+    <%= form.fields_for :meals do |meal_fields| %>
+      <%= meal_fields.hidden_field :id %>
+      <%= meal_fields.hidden_field :date %>
+
+    <div class="form-group border p-2 row justify-content-start">
+        <div class="col-2 col-md-1">
+            <%= meal_fields.label :date, class: "form-label"  do %>
+            <%= localize(meal_fields.object.date, format: '%a') %>
+            <% end %>
+            <%= localize(meal_fields.object.date, format: '%-m/%-d/%y')%>
+        </div>
+        <div class="col-3 col-md-2">
+            <%= meal_fields.label :recipe_id, class: "form-label" %>
+            <%= meal_fields.collection_select(:recipe_id, Recipe.order(:name), :id, :name, prompt: true,class:'my-custom-class') %>
+        </div>
+    </div>
+    <% end %>
+  </div>
+<br >
+  <div class="form-group">
+    <div class="col-sm-11 col-sm-offset-1">
+      <%= form.submit class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+<hr>

@@ -57,6 +57,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_000002) do
     t.index ["default_quantity_unit_id"], name: "index_ingredients_on_default_quantity_unit_id"
   end
 
+  create_table "meal_plans", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.date "date"
+    t.bigint "meal_plan_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_plan_id"], name: "index_meals_on_meal_plan_id"
+    t.index ["recipe_id"], name: "index_meals_on_recipe_id"
+  end
+
   create_table "quantity_units", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
