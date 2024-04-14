@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: %i[ show edit update destroy delete]
   before_action :set_breadcrumbs, only: [:show, :new, :edit, :delete]
   def index
     # @page = params[:page].to_i
@@ -8,7 +9,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
     add_breadcrumb(@task.name)
   end
 
@@ -31,13 +31,11 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
     add_breadcrumb(@task.name, task_path(@task))
     add_breadcrumb("Edit")
   end
 
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
       redirect_to task_path(@task)
     else
@@ -47,18 +45,20 @@ class TasksController < ApplicationController
   end
 
   def delete
-    @task = Task.find(params[:id])
     add_breadcrumb(@task.name, task_path(@task))
     add_breadcrumb("Delete")
   end
 
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     redirect_to tasks_path
   end
 
   private
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
   def set_breadcrumbs
     add_breadcrumb("Home", "/")
