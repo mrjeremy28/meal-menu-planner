@@ -19,7 +19,7 @@ class MealPlan < ApplicationRecord
         available_recipe_ids = unused_recipe_ids
       end
 
-      meals.build(date: date, recipe_id: available_recipe_ids.sample)
+      meals.build(date: date, recipe_id: nil)
     end
   end
 
