@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row row-cols-3 row-cols-md-3 g-1">
+    <% meal_plan.meals.order(:date).each_slice(3) do |slice| %>
+      <% slice.each do |meal| %>
+        <div class="col">
+          <div class="card h-100 text-center">
+            <% if meal.recipe.image.attached? %>
+              <%= image_tag meal.recipe.image, class: "card-img-top", alt: "#{meal.recipe.name} Image" %>
+            <% else %> 
+              <%= image_tag "https://placehold.co/600x400/orange/white", class: "card-img-top", alt: "Placeholder Image" %>
+            <% end %>
+
+            <div class="card-footer text-body-secondary text-truncate " title="<%= meal.recipe.name %>">
+              <%= meal.recipe.name %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

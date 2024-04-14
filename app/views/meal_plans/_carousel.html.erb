@@ -1,10 +1,12 @@
 <div id="mealCarousel" data-controller="meal-plan" class="carousel slide">
+  <!-- Carousel Indicators -->
   <div class="carousel-indicators">
     <% meal_plan.meals.order(:date).each_with_index do |m, index| %>
       <button type="button" data-bs-target="#mealCarousel" data-bs-slide-to="<%= index %>" class="<%= 'active' if m == meal_plan.meals.order(:date).first %>" aria-current="true" aria-label="<%= m.recipe.name %>"></button>
     <% end %>
   </div>
 
+  <!-- Carousel Items -->
   <div class="carousel-inner">
     <% meal_plan.meals.order(:date).each do |m| %>
       <div class="carousel-item <%= 'active' if m == meal_plan.meals.order(:date).first %>">
@@ -14,14 +16,16 @@
           <img src="https://placehold.co/600x400/orange/white" class="d-block w-100">
         <% end %>
 
-        <div class="carousel-caption d-block">
-          <h5><%= m.to_s %></h5>
-          <p><%= m.recipe.name %></p>
+        <!-- Carousel Caption -->
+        <div class="carousel-caption d-block text-dark bg-light p-3" style="opacity: 0.8; max-width: 75%;">
+          <h5 class="mb-0"><%= m.to_s %></h5>
+          <p class="mb-0"><%= m.recipe.name %></p>
         </div>
       </div>
     <% end %>
   </div>
 
+  <!-- Carousel Controls -->
   <button class="carousel-control-prev" type="button" data-bs-target="#mealCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
@@ -31,3 +35,12 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<style>
+/* Media query for mobile devices */
+@media (max-width: 576px) {
+  .carousel-caption {
+    max-width: 90%;
+  }
+}
+</style>
