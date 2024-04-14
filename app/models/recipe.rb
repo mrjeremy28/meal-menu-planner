@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
+  belongs_to :category, optional: true
   has_many :recipe_ingredients
   accepts_nested_attributes_for :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients

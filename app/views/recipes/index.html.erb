@@ -11,6 +11,7 @@
       <tr class="header">
         <th scope="col">Image</th>
         <th scope="col">Name</th>
+        <th scope="col">Category</th>
         <th scope="col">Servings</th>
         <th scope="col">Actions</th>
       </tr>
@@ -24,6 +25,7 @@
       <% end %>
     </td>
     <td scope="row"><%= recipe.name %></td>
+    <td><%= recipe.category&.name || "-" %></td>
     <td><%= recipe.servings %></td>
     
     <td class="actions" style="text-decoration:none">

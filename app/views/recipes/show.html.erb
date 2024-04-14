@@ -12,6 +12,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= @recipe.name %></h5>
           <p class="card-text">Servings: <%= @recipe.servings %></p>
+          <p class="card-text">Category: <%= @recipe.category&.name %></p>
         </div>
         <div class="card-header">
           Ingredients:
