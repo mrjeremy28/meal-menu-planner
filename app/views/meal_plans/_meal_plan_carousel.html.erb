@@ -1,0 +1,33 @@
+<div id="mealCarousel"  data-controller="meal-plan" class="carousel slide">
+
+  <div class="carousel-indicators">
+    <% meal_plan.meals.order(:date).each_with_index do |m, index| %>
+    <button type="button" data-bs-target="#mealCarousel" data-bs-slide-to="<%= index %>" class="<%= 'active' if m == meal_plan.meals.order(:date).first %>" aria-current="true" aria-label="<%= m.recipe.name %>"></button>
+    <% end %>
+  </div>
+
+  <% meal_plan.meals.order(:date).each do |m| %>
+    <div id="<%= dom_id m.recipe %>" class="carousel-inner">
+      <div class="carousel-item <%= 'active' if m == meal_plan.meals.order(:date).first %>">
+        <% if m.recipe.image.attached? %>
+        <img src="<%=(url_for(m.recipe.image))%>" class="d-block w-100" alt="<%= m.recipe.image.filename %>">
+        <% else %> 
+        <img src="https://placehold.co/600x400/orange/white" class="d-block w-100">
+        <% end %>
+
+        <div class="carousel-caption d-block">
+          <h5><%= m.to_s %></h5>
+          <p><%= m.recipe.name %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <button class="carousel-control-prev" type="button" data-bs-target="#mealCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#mealCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

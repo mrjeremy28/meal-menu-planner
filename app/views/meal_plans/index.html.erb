@@ -14,7 +14,7 @@
     <div class="nested-fields p-2 g-col-12">
       <div class="form-group border p-2 row justify-content-start">
         <h4><%= link_to meal_plan.to_s, meal_plan %></h4>
-        <%= render meal_plan %>
+        <%= render(partial: "meal_plan_carousel", locals: {meal_plan: meal_plan}) %>
         <p>
           <%= link_to "Show this meal plan", meal_plan %>
         </p>
