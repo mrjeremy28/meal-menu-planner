@@ -1,19 +1,16 @@
 # Meal Menu Planner
 
-## Future Specs include
+## Features
 * Ability to create menu from list of meals
 * Edit List of Meals
 * Create/edit recipes
-* List of Ingredients
-* Grocery List
 * Task Manager
 
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+## Future Specs include
+* Drag/Drop reordering
+* Import recipes from url/image/camera
+* List of Ingredients
+* Grocery List
 
 
 ## System Requirements
@@ -40,10 +37,16 @@ rake db:migrate
 rails s
 ```
 
-## Resources
+## Seed the database
+* edit seeds.rb
+```ruby
+    Ingredient.new(name: "Onions", description: "Full Onion used for flavor")
+```
+### Run seed command
+```
+rails db:seed
+```
 
-|||
-|-----------------------------------:|:--------------------------|
 ## Schema (Ideal)
 - Users
     - name:        string
@@ -96,3 +99,5 @@ rails s
     - unitFrom    relationship
     - unitTo      relationship
     - multiplier  decimal
+
+## TODO
