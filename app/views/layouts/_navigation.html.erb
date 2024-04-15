@@ -34,7 +34,8 @@
         </ul>
         <div class="d-flex">
           <span class="navbar-text" style="padding-right: 10px;">User: <%= @username %>  </span>
-          <button class="btn btn-outline-success" type="submit">Logout</button>
+
+          <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-danger" %>
         </div>
       </div>
     </div>

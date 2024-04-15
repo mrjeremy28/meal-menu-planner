@@ -3,3 +3,10 @@
     <%= flash[:notice] %>
 </div>
 <% end %>
+<% if flash[:alert].present? %>
+<div id ="flash-alert">
+    <%= flash[:alert] %>
+</div>
+<% end %>
+<p class="notice"><%= notice %></p> 
+<p class="alert"><%= alert %></p> 
