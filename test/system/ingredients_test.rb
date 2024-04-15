@@ -36,7 +36,7 @@ class IngredientsTest < ApplicationSystemTestCase
 
   test "should destroy Ingredient" do
     visit ingredient_url(@ingredient)
-    click_on "Destroy this ingredient", match: :first
+    click_on "Delete Ingredient", match: :first
 
     assert_text "Ingredient was successfully destroyed"
   end
