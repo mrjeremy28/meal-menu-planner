@@ -1,26 +1,49 @@
 
 <%= form_for @meal_plan, html: { class: "form-horizontal" } do |form| %>
-  <%= form.hidden_field :start_date %>
-  <%= form.hidden_field :end_date %>
+  <% if @meal_plan.id.present? then %>
+    <div class="form-group">
+      <%= form.label :start_date %>
+      <%= form.text_field :start_date, type: "date", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :end_date %>
+      <%= form.text_field :end_date, type: "date", class: "form-control" %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :start_date %>
+    <%= form.hidden_field :end_date %>
+  <% end %>
+
+
 
   <div class="meals">
-    <%= form.fields_for :meals do |meal_fields| %>
-      <%= meal_fields.hidden_field :id %>
-      <%= meal_fields.hidden_field :date %>
 
-    <div class="form-group border p-2 row justify-content-start">
-        <div class="col-2 col-md-1">
-            <%= meal_fields.label :date, class: "form-label"  do %>
-            <%= localize(meal_fields.object.date, format: '%a') %>
-            <% end %>
-            <%= localize(meal_fields.object.date, format: '%-m/%-d/%y')%>
-        </div>
-        <div class="col-3 col-md-2">
-            <%= meal_fields.label :recipe_id, class: "form-label" %>
-            <%= meal_fields.collection_select(:recipe_id, Recipe.order(:name), :id, :name, prompt: true,class:'my-custom-class') %>
-        </div>
+    <div class="pt-2 row align-items-center">
+      <div class="col-auto">
+        <h3>Meals</h3>
+      </div>
+      <div class="col-auto">
+        <%= button_tag("Add Meal", {
+          class:'btn btn-sm btn-outline-primary',
+          data: {
+            controller: "nested-fields", 
+            association: "meals" ,
+            action: "click->nested-fields#addField", 
+            content: form.fields_for(:meals, Meal.new, child_index:"NEW_RECORD") {|meal_form| render("meal", meal_fields: meal_form) }
+          }
+        }) do %>
+          <i class="fa-regular fa-square-plus"></i>
+        <% end %>
+      </div>
     </div>
-    <% end %>
+
+    <div id="meals" >
+
+      <%= form.fields_for :meals, @meal_plan.meals.order(:date) do |meal_fields| %>
+          <%= render 'meal', meal_fields: meal_fields %>        
+        <% end %>
+    </div>
   </div>
 <br >
   <div class="form-group">

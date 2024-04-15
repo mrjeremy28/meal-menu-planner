@@ -1,0 +1,22 @@
+
+<%= meal_fields.hidden_field :id %>
+<%= meal_fields.hidden_field :date %>
+
+<div id="meal" class="form-group border p-2 row justify-content-start">
+    <div class="col-3 col-md-2">
+    <div class="form-group">
+        <%= meal_fields.label :date, class: "form-label"  do %>
+            <% if meal_fields.object.date.present? %>
+            <%= "Date: " + localize(meal_fields.object.date, format: '%a') %>
+            <% else %>
+            <%= "Date:" %>
+            <% end %>
+        <% end %>
+        <%= meal_fields.text_field :date, type: "date", class: "form-control" %>
+    </div>
+    </div>
+    <div class="col-3 col-md-2">
+        <%= meal_fields.label :recipe_id, class: "form-label" %>
+        <%= meal_fields.collection_select(:recipe_id, Recipe.order(:name), :id, :name, prompt: true,class:'my-custom-class') %>
+    </div>
+</div>

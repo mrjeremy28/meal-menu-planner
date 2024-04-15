@@ -64,7 +64,7 @@
             controller: "nested-fields", 
             association: "ingredients" ,
             action: "click->nested-fields#addField", 
-            content: form.fields_for(:recipe_ingredients, RecipeIngredient.new, child_index:"NEW_RECORD") {|dose_form| render("recipe_ingredient_fields", f: dose_form) }
+            content: form.fields_for(:recipe_ingredients, RecipeIngredient.new, child_index:"NEW_RECORD") {|recipe_ingredient_form| render("recipe_ingredient_fields", f: recipe_ingredient_form) }
           }
         }) do %>
           <i class="fa-regular fa-square-plus"></i>
