@@ -108,6 +108,7 @@ rails db:seed
 # Screenshots
 
 ## Meal Plans
+![Alt text](mealPlans.jpg?raw=true "Meal Plans")
 
 ## Tasks
 ![Alt text](tasks.jpg?raw=true "Tasks")
@@ -119,8 +120,10 @@ rails db:seed
 ![Alt text](categories.jpg?raw=true "Categories")
 
 ## Recipes
+![Alt text](recipes.jpg?raw=true "Recipes")
 
 ## Ingredients
+![Alt text](ingredients.jpg?raw=true "Ingredients")
 
 ## Quantity Units
 ![Alt text](quantityUnits.jpg?raw=true "quantityUnits")
