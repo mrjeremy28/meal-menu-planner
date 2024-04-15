@@ -38,7 +38,7 @@ class RecipesTest < ApplicationSystemTestCase
 
   test "should destroy Recipe" do
     visit recipe_url(@recipe)
-    click_on "Destroy this recipe", match: :first
+    click_on "Delete Recipe", match: :first
 
     assert_text "Recipe was successfully destroyed"
   end

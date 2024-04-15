@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
   belongs_to :category, optional: true
+  has_many :meals, dependent: :destroy
   has_many :recipe_ingredients, dependent: :destroy
   accepts_nested_attributes_for :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients, dependent: :destroy

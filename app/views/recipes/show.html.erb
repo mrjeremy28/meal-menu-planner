@@ -43,8 +43,8 @@
         </ul>
         <div class="card-body">
           <%= link_to("Edit this recipe", edit_recipe_path(@recipe), class: 'action edit btn btn-primary float-start') %>
-          <%= button_to "Destroy this recipe", @recipe, method: :delete, class: 'btn btn-danger float-end' %>
-          
+          <%= link_to 'Delete Recipe',url_for(action: :destroy, id: @recipe.id),method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}?"}, class: 'btn btn-danger float-end' %>
+
         </div>
       </div>
     </div>
