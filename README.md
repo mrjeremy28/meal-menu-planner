@@ -101,3 +101,6 @@ rails db:seed
     - multiplier  decimal
 
 ## TODO
+* User management (Future)
+* View Recipe (Future)
+    * Add markdown viewer for instructions
