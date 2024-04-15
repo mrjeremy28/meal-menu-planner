@@ -27,7 +27,7 @@
             <%= link_to edit_quantity_unit_path(quantity), class: "action edit" do %>
             <button type="button" class="btn btn-sm btn-outline-success col-xs-4"><i class="fa-regular fa-pen-to-square"></i></button>
             <% end %>
-            <%= link_to quantity_unit_path(quantity), method: :delete, class: "action delete" do %>
+            <%= link_to quantity_unit_path(quantity), method: :delete, data: {confirm: "Are you sure you want to delete #{quantity.name}?"} do %>
             <button type="button" class="btn btn-sm btn-outline-danger col-xs-4"><i class="fa-regular fa-trash-can"></i></button>
             <% end %>          
 

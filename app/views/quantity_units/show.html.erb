@@ -8,7 +8,8 @@
     <div class="d-flex justify-content-end">
     
       <%= link_to("Edit", edit_quantity_unit_path(@quantity_unit), class: 'action edit btn btn-primary') %>
-      <%= link_to("Delete", quantity_unit_path(@quantity_unit), method: :delete, class: 'action delete btn btn-danger') %>
+      <%= link_to 'Delete',url_for(action: :destroy, id: @quantity_unit.id),method: :delete, data: {confirm: "Are you sure you want to delete #{@quantity_unit.name}?"}, class: 'btn btn-danger float-end' %>
+
     </div>
     
     <table class="table table-striped">    

@@ -34,7 +34,7 @@ class QuantityUnitsTest < ApplicationSystemTestCase
 
   test "should destroy Quantity unit" do
     visit quantity_unit_url(@quantity_unit)
-    click_on "Destroy this quantity unit", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Quantity unit was successfully destroyed"
   end
