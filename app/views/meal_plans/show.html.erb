@@ -3,7 +3,8 @@
 <div class="d-flex justify-content-end">
     
   <%= link_to("Edit", edit_meal_plan_path(@meal_plan), class: 'action edit btn btn-primary') %>
-  <%= link_to("Delete", meal_plan_path(@meal_plan), method: :delete, class: 'action delete btn btn-danger') %>
+  <%= link_to 'Delete',url_for(action: :destroy, id: @meal_plan.id),method: :delete, data: {confirm: "Are you sure you want to delete #{@meal_plan.to_s}?"}, class: 'btn btn-danger float-end' %>
+
 </div>
 
 <%= render @meal_plan %>

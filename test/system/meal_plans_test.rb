@@ -36,7 +36,7 @@ class MealPlansTest < ApplicationSystemTestCase
 
   test "should destroy Meal plan" do
     visit meal_plan_url(@meal_plan)
-    click_on "Destroy this meal plan", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Meal plan was successfully destroyed"
   end
