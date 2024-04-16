@@ -1,5 +1,3 @@
-<p style="color: green"><%%= notice %></p>
-
 <%% content_for :title, "<%= human_name.pluralize %>" %>
 
 <h1><%= human_name.pluralize %></h1>
