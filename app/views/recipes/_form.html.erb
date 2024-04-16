@@ -61,10 +61,11 @@
         <%= button_tag("Add Ingredient", {
           class:'btn btn-sm btn-outline-primary',
           data: {
-            controller: "nested-fields", 
+            controller: "nested-fields",
+            countclass: "recipe-ingredient",
             association: "ingredients" ,
             action: "click->nested-fields#addField", 
-            content: form.fields_for(:recipe_ingredients, RecipeIngredient.new, child_index:"NEW_RECORD") {|recipe_ingredient_form| render("recipe_ingredient_fields", f: recipe_ingredient_form) }
+            content: form.fields_for(:recipe_ingredients, RecipeIngredient.new(order: "NEW_ORDER"), child_index:"NEW_RECORD") {|recipe_ingredient_form| render("recipe_ingredient_fields", f: recipe_ingredient_form) }
           }
         }) do %>
           <i class="fa-regular fa-square-plus"></i>

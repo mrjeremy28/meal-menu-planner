@@ -37,9 +37,18 @@ export default class extends Controller {
     const target = event.currentTarget;
     const association = target.dataset.association;
     const content = target.dataset.content;
+    const countClass = target.dataset.countclass;
     const container = document.getElementById(association);
+    
+    // Get the current number of recipe ingredients
+    const currentCount = container.querySelectorAll("."+countClass).length;
+    const newIndex = new Date().getTime()
+    // Increment the order for the new recipe ingredient
+    const newOrder = currentCount + 1;
+
     const newField = document.createElement("div");
-    newField.innerHTML = content.replace(/NEW_RECORD/g, new Date().getTime());
+    console.log({content})
+    newField.innerHTML = content.replace(/NEW_RECORD/g, currentCount).replace(/NEW_ORDER/g, newOrder);
     container.appendChild(newField);
   }
 

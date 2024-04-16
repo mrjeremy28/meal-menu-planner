@@ -29,6 +29,7 @@
           data: {
             controller: "nested-fields", 
             association: "meals" ,
+            countclass: "meal-recipe",
             action: "click->nested-fields#addField", 
             content: form.fields_for(:meals, Meal.new, child_index:"NEW_RECORD") {|meal_form| render("meal", meal_fields: meal_form) }
           }
