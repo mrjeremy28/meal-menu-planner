@@ -1,5 +1,6 @@
 
 <%= form_for @meal_plan, html: { class: "form-horizontal" } do |form| %>
+  <%= error_messages_for(form.object) %>
   <% if @meal_plan.id.present? then %>
     <div class="form-group">
       <%= form.label :start_date %>

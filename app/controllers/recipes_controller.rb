@@ -43,9 +43,9 @@ class RecipesController < ApplicationController
       else
         @ingredients = Ingredient.all
         @quantity_units = QuantityUnit.all
-        render(:new, status: 422)
-        # format.html { render :new, status: :unprocessable_entity }
-        # format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        # render(:new, status: 422)
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
