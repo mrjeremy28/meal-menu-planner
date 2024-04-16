@@ -10,6 +10,7 @@
         <th scope="col">Image</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
+        <th scope="col">Default Unit</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
     </td>
     <td scope="row"><%= ingredient.name %></td>
     <td><%= ingredient.description %></td>
+    <td><%= ingredient.default_quantity_unit&.name %></td>
     
 
     <td class="actions" style="text-decoration:none">
