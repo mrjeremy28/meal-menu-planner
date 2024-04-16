@@ -19,11 +19,21 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if @category.save
-      redirect_to(categories_path)
-    else
-      render('new', status: 422)
+
+    respond_to do |format|
+      if @category.save
+        format.html { redirect_to category_url(@category), notice: "Category was successfully created." }
+        format.json { render :show, status: :created, location: @category }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @category.errors, status: :unprocessable_entity }
+      end
     end
+    # if @category.save
+    #   redirect_to(categories_path)
+    # else
+    #   render('new', status: 422)
+    # end
   end
 
   def edit
