@@ -33,20 +33,31 @@ class RecipeIngredient < ApplicationRecord
       self.order = recipe.recipe_ingredients..maximum(:order).to_i + 1
     end
   end
+
+  def mixed_fraction_to_rational(mixed_fraction)
+    whole, fraction = mixed_fraction.split(' ')
+    whole ||= '0'
+    numerator, denominator = fraction.split('/').map(&:to_i)
+    Rational(whole.to_i * denominator + numerator, denominator)
   end
 
   def parse_quantity_string
     return if quantity.blank?
 
-    # Regular expression to match fractions (e.g., 1/2)
-    fraction_regex = /^(\d+)\/(\d+)$/
+    # Regular expression to match space (e.g., 2 1/2)
+    space_regex = /\s/
 
-    if fraction_regex.match?(quantity)
-      self.quantity_numerator, self.quantity_denominator = quantity.split('/').map(&:to_i)
+    if space_regex.match?(quantity) then
+      ration_value = mixed_fraction_to_rational(quantity)
     else
-      self.quantity_numerator = quantity.to_i
-      self.quantity_denominator = 1
+      ration_value = Rational(quantity)
     end
+
+    # Update quantity numerator and denominator
+    self.quantity = ration_value.to_simplified_s
+    self.quantity_numerator = ration_value.numerator
+    self.quantity_denominator = ration_value.denominator
+
   end
 
   def previous_ingredient
