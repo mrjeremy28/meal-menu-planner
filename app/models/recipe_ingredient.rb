@@ -29,7 +29,10 @@ class RecipeIngredient < ApplicationRecord
   private
 
   def set_order
-    self.order = RecipeIngredient.maximum(:order).to_i + 1
+    if self.order == 0 then
+      self.order = recipe.recipe_ingredients..maximum(:order).to_i + 1
+    end
+  end
   end
 
   def parse_quantity_string
