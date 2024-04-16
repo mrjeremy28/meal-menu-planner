@@ -12,11 +12,11 @@
             <%= "Date:" %>
             <% end %>
         <% end %>
-        <%= meal_fields.text_field :date, type: "date", class: "form-control" %>
+        <%= meal_fields.text_field :date, type: "date", class: "form-control", required: true %>
     </div>
     </div>
     <div class="col-3 col-md-2">
         <%= meal_fields.label :recipe_id, class: "form-label" %>
-        <%= meal_fields.collection_select(:recipe_id, Recipe.order(:name), :id, :name, prompt: true,class:'my-custom-class') %>
+        <%= meal_fields.collection_select(:recipe_id, Recipe.order(:name), :id, :name, prompt: true,class:'my-custom-class', required: true) %>
     </div>
 </div>

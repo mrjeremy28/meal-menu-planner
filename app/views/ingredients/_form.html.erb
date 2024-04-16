@@ -4,7 +4,7 @@
   <div class="form-group row">
     <%= form.label :name, class: "col-4 col-form-label" %>
     <div class="col-8">
-    <%= form.text_field :name, class: 'form-control' %>
+    <%= form.text_field :name, class: 'form-control', required: true %>
     </div>
   </div>
 
@@ -37,15 +37,12 @@
   <div class="form-group row">
     <%= form.label :default_quantity_unit_id, 'Default Quantity Unit', class: "col-4 col-form-label" %>
     <div class="col-8">
-      <%= form.collection_select(:default_quantity_unit_id, QuantityUnit.all, :id, :name, prompt: true) %>
+      <%= form.collection_select(:default_quantity_unit_id, QuantityUnit.all, :id, :name, prompt: true, required: true) %>
     </div>
   </div>
   
-    <div class="form-group row">
-      <div class="container"><br></div>
-    </div>
 
-    <div class="form-group row">
+    <div class="form-group row pt-5">
         <div class="offset-4 col-8">
           <%= form.submit("Save ingredient", :class=> "btn btn-success") %>
     </div>
