@@ -48,3 +48,14 @@
   .action {
     text-decoration: none;
   }
+
+  .fixed-image {
+    width: 275px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    object-fit: cover;
+  }
+  .fixed-image-thumb {
+    width: 215px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    object-fit: cover;
+  }

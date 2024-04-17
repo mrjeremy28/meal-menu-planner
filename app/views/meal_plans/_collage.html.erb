@@ -5,9 +5,9 @@
         <div class="col">
           <div class="card h-100 text-center">
             <% if meal.recipe.image.attached? %>
-              <%= image_tag meal.recipe.image, class: "card-img-top", alt: "#{meal.recipe.name} Image" %>
+              <%= image_tag meal.recipe.image, class: "card-img-top fixed-image", alt: "#{meal.recipe.name} Image" %>
             <% else %> 
-              <%= image_tag "https://placehold.co/600x400/orange/white", class: "card-img-top", alt: "Placeholder Image" %>
+              <%= image_tag "https://placehold.co/600x400/orange/white", class: "card-img-top fixed-image", alt: "Placeholder Image" %>
             <% end %>
 
             <div class="card-footer text-body-secondary text-truncate " title="<%= meal.recipe.name %>">
