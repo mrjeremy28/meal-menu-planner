@@ -14,8 +14,9 @@ class RecipeIngredient < ApplicationRecord
 
 
   def full_ingredient
-    # quantity_ingredient = pluralize(quantity, quantity_unit.name)
-    [quantity, quantity_unit.name, ingredient.name, ].join(' ')
+    quantity_label = quantity_numerator / quantity_denominator  > 1 ? quantity_unit.name.pluralize : quantity_unit.name
+    [quantity, quantity_label, ingredient.name].join(' ')
+    # [quantity, quantity_unit.name, ingredient.name, ].join(' ')
   end
 
   def move_up
