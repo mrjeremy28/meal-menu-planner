@@ -4,11 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <%= form_with url: access_path, method: :post, class: "mt-5" do |form| %>
-          <% if flash[:alert] %>
-            <div class="alert alert-danger" role="alert">
-              <%= flash[:alert] %>
-            </div>
-          <% end %>
+          
           <div class="mb-3">
             <%= form.label :username, class: "form-label" %>
             <%= form.text_field :username, class: "form-control" %>
