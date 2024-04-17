@@ -4,7 +4,7 @@ class MealPlansController < ApplicationController
 
   # GET /meal_plans or /meal_plans.json
   def index
-    @meal_plans = MealPlan.all
+    @meal_plans = MealPlan.all.order(:start_date)
     add_breadcrumb("Home", "/")
     add_breadcrumb("Meal Plans")
   end
