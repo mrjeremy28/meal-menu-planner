@@ -14,7 +14,7 @@
 
   <body>
     <%= render(partial: "layouts/navigation") %>
-    <div class="container-fluid">
+    <div class="container-fluid no-print">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <% breadcrumbs.each do |crumb| %>
@@ -38,7 +38,7 @@
       <%= render(partial: "layouts/flash") %>
       <%= yield %>
     </div>
-    <nav class="navbar bottom bg-body-tertiary">
+    <nav class="navbar bottom bg-body-tertiary no-print">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Copyright @2024</a>
       </div>

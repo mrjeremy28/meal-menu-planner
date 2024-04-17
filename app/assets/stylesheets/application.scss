@@ -17,3 +17,47 @@
  @import "bootstrap";
  @import "font-awesome";
  @import "jquery-ui.css";
+
+
+ @media print {
+    /* Hide certain elements */
+    .no-print {
+      display: none;
+    }
+    .container.print {
+        width:max-content;
+        max-width:100%;
+      }
+  
+    .print img {
+      width:200px;
+      height:200px;
+      object-fit: cover;
+    }
+    .print .card-body { 
+      text-align: left;
+      position: absolute;
+      top: 0px;
+      left: 216px;
+    }
+
+    /* Adjust font sizes and margins for better readability */
+    body {
+      font-size: 8pt;
+      margin: 5mm;
+    }
+  
+    /* Define specific styles for headers and footers */
+    @page {
+      size: Letter;
+      margin: 5mm;
+    }
+    @page :first {
+      margin-top: 6mm;
+    }
+    @page :last {
+      margin-bottom: 5mm;
+    }
+  }
+
+  

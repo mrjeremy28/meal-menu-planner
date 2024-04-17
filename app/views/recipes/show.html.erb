@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container print">
   <div class="row">
     <div class="col"> </div>
     <div class="col-sm-12 col-md-10 col-lg-8">
@@ -40,7 +40,7 @@
           <!-- <li class="list-group-item">A second item</li>
           <li class="list-group-item">A third item</li> -->
         </ul>
-        <div class="card-body">
+        <div class="card-footer no-print">
           <%= link_to("Edit this recipe", edit_recipe_path(@recipe), class: 'action edit btn btn-primary float-start') %>
           <%= link_to 'Delete Recipe',url_for(action: :destroy, id: @recipe.id),method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}?"}, class: 'btn btn-danger float-end' %>
 
