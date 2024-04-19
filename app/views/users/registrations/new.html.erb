@@ -1,0 +1,35 @@
+
+<div class="container pb-5">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= error_messages_for(f.object) %>
+    <div class="card">
+      <div class="card-header">
+        Sign Up
+      </div>
+        
+      <div class="card-body">
+        <div class="col-md-6">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true%>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :password, class: "form-label" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", required: true %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :password_confirmation, class: "form-label" %>
+          <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class: "form-control", required: true %>
+        </div>
+      </div>
+      <div class="card-footer">
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
+        
+      </div>
+    </div>     
+  <% end %>
+  <%= render "users/shared/links" %>
+</div>
+

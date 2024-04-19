@@ -1,0 +1,32 @@
+<div class="container pb-5">
+  <div class="card">
+    <div class="card-header">
+      Log in
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= error_messages_for(f.object) %>
+      <div class="card-body">
+        <div class="col-md-6">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :password, class: "form-label" %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "current-password", class: "form-control", required: true %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="col-md-6 form-check form-switch">
+            <%= f.check_box :remember_me, class: "form-check-input", role: "switch" %>
+            <%= f.label :remember_me, class: "form-check-label" %>                  
+          </div>
+        <% end %>
+      </div>
+      <div class="card-footer">
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+        
+      </div>
+    <% end %>
+  </div>     
+  <%= render "users/shared/links" %>
+</div>
+
