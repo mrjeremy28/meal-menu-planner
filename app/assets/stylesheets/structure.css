@@ -59,3 +59,8 @@
     height: 200px; /* Adjust as needed */
     object-fit: cover;
   }
+  .fixed-profile-image-thumb {
+    width: 350px; /* Adjust as needed */
+    height: 350px; /* Adjust as needed */
+    object-fit: cover;
+  }
