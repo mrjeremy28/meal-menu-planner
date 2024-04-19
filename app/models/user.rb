@@ -1,19 +1,27 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :validatable, :trackable
 
   has_many :task_assignments
   has_many :tasks, through: :task_assignments
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
+
 
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
 
-  validates :first_name, presence: true, length: { maximum: 25 }
-  validates :last_name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true,
-                    length: { maximum: 100 },
-										uniqueness: true,
-                    format: { with: EMAIL_REGEX },
-                    confirmation: true
+  # validates :first_name, presence: true, length: { maximum: 25 }
+  # validates :last_name, presence: true, length: { maximum: 50 }
+  # validates :email, presence: true,
+  #                   length: { maximum: 100 },
+	# 									uniqueness: true,
+  #                   format: { with: EMAIL_REGEX },
+  #                   confirmation: true
 
-  validates_acceptance_of :terms
+  # validates_acceptance_of :terms
 
   scope :sorted, -> { order(:last_name, :first_name) }
 
