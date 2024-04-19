@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  # devise_for :users
+  devise_for :users, controllers: {
+    confirmations: 'users/confirmations',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    unlocks: 'users/unlocks'
+  }
+  devise_scope :user do
+    delete 'users/remove_image' => 'users/registrations#remove_image'
+    post 'users/upload_image' => 'users/registrations#upload_image'
+  end
+
+  # resources :users, only: [] do
+  #   delete 'users/remove_image', on: :member, to: 'users/registrations#remove_image'
+  # end
   resources :meal_plans
   resources :quantity_units
   resources :ingredients
