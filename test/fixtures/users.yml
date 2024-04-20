@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
+  first_name: Joe
+  last_name: bob
+  email: joBob@example.com
+  confirmed_at: <%= Time.current %>
 
 two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
+  first_name: Jane
+  last_name: Doe
+  email: jane_doe@example.com
+  confirmed_at: <%= Time.current %>

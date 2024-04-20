@@ -1,7 +1,9 @@
 require "test_helper"
 
 class MealPlansControllerTest < ActionDispatch::IntegrationTest
+
   setup do
+    sign_in users(:one)
     @meal_plan = meal_plans(:one)
   end
 

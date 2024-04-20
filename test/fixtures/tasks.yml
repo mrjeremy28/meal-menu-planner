@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
+  name: 'Mow The Lawn'
+  description: 'Here you need to get mower out, clean it and mow the lawn.'
   position: 1
   completed: false
 
 two:
-  name: MyString
-  description: MyText
-  position: 1
-  completed: false
+  name: 'Wash the dishes'
+  description: 'Empty the dishwasher\n Load the dishwasher'
+  position: 2
+  completed: true

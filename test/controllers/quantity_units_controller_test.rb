@@ -1,13 +1,21 @@
 require "test_helper"
 
 class QuantityUnitsControllerTest < ActionDispatch::IntegrationTest
+
   setup do
+    user = users(:one)
+    sign_in user
+    # puts "@current_user: #{@current_user.inspect}" # Print signed-in user for debugging
+    # sign_in FactoryBot.create(:admin)
+
     @quantity_unit = quantity_units(:one)
   end
 
   test "should get index" do
+
     get quantity_units_url
     assert_response :success
+
   end
 
   test "should get new" do
@@ -17,7 +25,7 @@ class QuantityUnitsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create quantity_unit" do
     assert_difference("QuantityUnit.count") do
-      post quantity_units_url, params: { quantity_unit: { name: @quantity_unit.name } }
+      post quantity_units_url, params: { quantity_unit: { name: quantity_units(:two) } }
     end
 
     assert_redirected_to quantity_unit_url(QuantityUnit.last)

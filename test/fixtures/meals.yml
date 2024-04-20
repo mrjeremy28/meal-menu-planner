@@ -6,6 +6,6 @@ one:
   recipe: one
 
 two:
-  date: 2024-04-11
-  meal_plan: two
+  date: 2024-04-12
+  meal_plan: one
   recipe: two

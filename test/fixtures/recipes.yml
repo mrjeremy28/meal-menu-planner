@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  servings: 1
-  instructions: MyText
+  name: 'Tofu Fried Rice'
+  servings: 4
+  instructions: "List of Ingredients above.\nPut in Insta-Pot"
 
 two:
-  name: MyString
-  servings: 1
-  instructions: MyText
+  name: 'Chicken Salad'
+  servings: 4
+  instructions: "Air Fry chicken. \n\n Assemble Salad"

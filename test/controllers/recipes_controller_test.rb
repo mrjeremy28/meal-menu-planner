@@ -3,6 +3,7 @@ require "test_helper"
 class RecipesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @recipe = recipes(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -45,4 +46,6 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to recipes_url
   end
+
+
 end

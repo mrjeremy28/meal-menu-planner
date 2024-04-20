@@ -3,9 +3,9 @@
 one:
   task: one
   user: one
-  role: MyString
+  role: 'New User'
 
 two:
-  task: two
+  task: one
   user: two
-  role: MyString
+  role: 'Admin'
