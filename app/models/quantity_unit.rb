@@ -1,5 +1,5 @@
 class QuantityUnit < ApplicationRecord
-  has_many :ingredients, foreign_key: :default_quantity_unit_id, dependent: :destroy
+  has_many :ingredients, foreign_key: :default_quantity_unit_id, dependent: :nullify
   has_many :recipe_ingredients, dependent: :destroy
   before_validation :singularize_name
 
