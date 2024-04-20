@@ -31,7 +31,7 @@
   <div class="form-group row">
     <%= form.label :default_quantity_unit_id, 'Default Quantity Unit', class: "col-4 col-form-label" %>
     <div class="col-8">
-      <%= form.collection_select(:default_quantity_unit_id, QuantityUnit.all, :id, :name, prompt: true, required: true) %>
+      <%= form.collection_select(:default_quantity_unit_id, QuantityUnit.all, :id, :name, prompt: true) %>
     </div>
   </div>
   
